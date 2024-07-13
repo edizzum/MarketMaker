@@ -4,6 +4,11 @@ import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import abi from "./abi/ContractAbi.json";
+import { IDKitWidget, ISuccessResult, useIDKit } from "@worldcoin/idkit";
+import { ConnectKitButton } from "connectkit";
+import { decodeAbiParameters, parseAbiParameters } from "viem";
+import { type BaseError, useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
@@ -56,12 +61,36 @@ export const HeaderMenuLinks = () => {
  * Site header
  */
 export const Header = () => {
+  const account = useAccount();
+  const [done, setDone] = useState(false);
+  const { setOpen } = useIDKit();
+  const { data: hash, isPending, error, writeContractAsync } = useWriteContract();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   useOutsideClick(
     burgerMenuRef,
     useCallback(() => setIsDrawerOpen(false), []),
   );
+  const submitTx = async (proof: ISuccessResult) => {
+    try {
+      await writeContractAsync({
+        address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`,
+        account: account.address!,
+        abi,
+        functionName: "verifyAndExecute",
+        args: [
+          account.address!,
+          BigInt(proof!.merkle_root),
+          BigInt(proof!.nullifier_hash),
+          decodeAbiParameters(parseAbiParameters("uint256[8]"), proof!.proof as `0x${string}`)[0],
+        ],
+      });
+      setDone(true);
+    } catch (error) {
+      throw new Error((error as BaseError).shortMessage);
+    }
+  };
 
   return (
     <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
@@ -100,6 +129,29 @@ export const Header = () => {
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
           <HeaderMenuLinks />
         </ul>
+      </div>
+      <div>
+        {account.isConnected && (
+          <>
+            <IDKitWidget
+              app_id={process.env.NEXT_PUBLIC_APP_ID as `app_${string}`}
+              action={process.env.NEXT_PUBLIC_ACTION as string}
+              signal={account.address}
+              onSuccess={submitTx}
+              autoClose
+            ></IDKitWidget>
+            {!done && (
+              <button onClick={() => setOpen(true)}>
+                {!hash && (isPending ? "Pending, please check your wallet..." : "World ID Connection")}
+              </button>
+            )}
+
+            {hash && <p>Transaction Hash: {hash}</p>}
+            {isConfirming && <p>Waiting for confirmation...</p>}
+            {isConfirmed && <p>Transaction confirmed.</p>}
+            {error && <p>Error: {(error as BaseError).message}</p>}
+          </>
+        )}
       </div>
       <div className="navbar-end flex-grow mr-4">
         <RainbowKitCustomConnectButton />
