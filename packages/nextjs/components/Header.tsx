@@ -10,6 +10,7 @@ import { ConnectKitButton } from "connectkit";
 import { decodeAbiParameters, parseAbiParameters } from "viem";
 import { type BaseError, useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
+import LogoSVG from "~~/app/assets/svg/logo";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
@@ -23,6 +24,10 @@ export const menuLinks: HeaderMenuLink[] = [
   {
     label: "Home",
     href: "/",
+  },
+  {
+    label: "Pools",
+    href: "/pools",
   },
   {
     label: "Debug Contracts",
@@ -43,9 +48,9 @@ export const HeaderMenuLinks = () => {
             <Link
               href={href}
               passHref
-              className={`${
-                isActive ? "bg-secondary shadow-md" : ""
-              } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+              className={`hover:!text-white hover:!bg-black ${
+                isActive ? "bg-black shadow-md !text-white " : ""
+              } hover:bg-secondary hover:shadow-md text-black focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
             >
               {icon}
               <span>{label}</span>
@@ -93,9 +98,9 @@ export const Header = () => {
   };
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
+    <div className="sticky lg:static top-0 navbar bg-white min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
       <div className="navbar-start w-auto lg:w-1/2">
-        <div className="lg:hidden dropdown" ref={burgerMenuRef}>
+        {/* <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
             tabIndex={0}
             className={`ml-1 btn btn-ghost ${isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"}`}
@@ -116,20 +121,25 @@ export const Header = () => {
               <HeaderMenuLinks />
             </ul>
           )}
-        </div>
+        </div> */}
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-10 h-10">
+          {/* <div className="flex relative w-10 h-10">
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
-          </div>
-          <div className="flex flex-col">
+          </div> */}
+          {/* <div className="flex flex-col">
             <span className="font-bold leading-tight">Scaffold-ETH</span>
             <span className="text-xs">Ethereum dev stack</span>
-          </div>
+          </div> */}
         </Link>
+
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
           <HeaderMenuLinks />
         </ul>
+        <span className="pl-4">
+          <LogoSVG />
+        </span>
       </div>
+
       <div>
         {account.isConnected && (
           <>
