@@ -1,81 +1,43 @@
-# 🏗 Scaffold-ETH 2
+# MarketMaker
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+MarketMaker is a marketing platform designed for project owners who may lack the necessary connections or experience in marketing and PR. MarketMaker hosts content creators and community managers with high engagement and follower counts, allowing project owners to utilize their marketing budget efficiently and profitably on a platform that benefits both parties. Instead of wasting users time with promises of airdrops, we provide real value, ensuring they can earn money from their work.
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+![image](https://github.com/user-attachments/assets/d84efb2a-5ad6-44b9-9803-04ba4b9d3d54)
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+## Features
 
-## Requirements
+### Trust and Authenticity
 
-Before you begin, you need to install the following tools:
+To address trust issues and the concern of “Is this a real person?”, everyone is required to register with WorldID, for eliminating this worry. To prevent bots, only one Twitter account can be linked to a single WorldID.
 
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+![image](https://github.com/user-attachments/assets/a8e4fd60-a30e-4224-901b-86f04804165b)
 
-## Quickstart
 
-To get started with Scaffold-ETH 2, follow the steps below:
+### Web3Auth Integration
 
-1. Clone this repo & install dependencies
+For those unfamiliar with Web3, we offer the ability to sign in using Web3Auth with almost anything like E-mail, Gmail, Phone Number, or Discord. Web3Auth creates an EOA wallet for these users, which can then be linked to WorldID.
 
-```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
-yarn install
-```
+![image](https://github.com/user-attachments/assets/54603679-a009-45df-a00a-bdee8b993ccb)
 
-2. Run a local network in the first terminal:
 
-```
-yarn chain
-```
+### Pool Creation and Management
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
+Project owners can open a pool on the Arbitrum chain with MM Tokens created using LayerZero’s OFT standard, within the budget they allocate on our platform. It’s important to note that users can open a pool on Arbitrum by paying a fee for opening the pool from any network.
 
-3. On a second terminal, deploy the test contract:
 
-```
-yarn deploy
-```
+### Content Creator Tiers
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
+Content creators are assigned Tiers (1–3) based on their Twitter post engagement, follower count, and profile visits, and can mint their NFTs created with LayerZero’s ONFT standard. Tier holders produce content based on the project owner’s specified requirements. After meeting the requirements, content creators can claim their rewards by checking their progress.
 
-4. On a third terminal, start your NextJS app:
+![image](https://github.com/user-attachments/assets/9a1f1176-5903-4310-856c-7048f128c2bf)
 
-```
-yarn start
-```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+### Reward Distribution
 
-**What's next**:
+Claiming rewards isn’t immediate. The project owner sets a deadline, up to a maximum of one month, and all content creators participating in the pool will share rewards according to their Tier ratios by this deadline.
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
-- Edit your smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
+## Revenue Model
 
-## Documentation
-
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+The MarketMaker Team earns a 5% commission from the liquidity that is added to the pool by the user.
