@@ -20,15 +20,17 @@ export default function ProfilePage() {
   }
   return (
     <div className="flex flex-col border rounded-3xl px-20 py-6 w-2/3 max-w-6xl backdrop-blur-sm bg-black/20 mx-auto mt-20 ">
-      <h1 className="text-4xl font-bold mb-3">Edit Your Profile</h1>
+      <h1 className="text-4xl font-bold mb-3">Connection To WorldID</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-1.5 w-full">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Email</label>
         <input defaultValue={updateData.name} type="text" id="name" name="name" />
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Gmail</label>
         <input defaultValue={updateData.email}  type="email" id="email" name="email" />
-        <label htmlFor="website">Website</label>
+        <label htmlFor="website">Discord</label>
         <input defaultValue={updateData.website}  type="text" id="website" name="website" />
         <label htmlFor="twitter">Twitter</label>
+        <input defaultValue={updateData.twitter}  type="text" id="twitter" name="twitter" />
+        <label htmlFor="twitter">Phone Number</label>
         <input defaultValue={updateData.twitter}  type="text" id="twitter" name="twitter" />
         <button
           className="
