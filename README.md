@@ -1,5 +1,5 @@
 # MarketMaker
-Why a transparent intermediary platform for marketing when there are intermediaries for everything else?
+While there are intermediaries for everything, why is there no transparent intermediary platform for marketing?
 
 MarketMaker is a marketing platform designed for project owners who may lack the necessary connections or experience in marketing and PR. MarketMaker hosts content creators and community managers with high engagement and follower counts, allowing project owners to utilize their marketing budget efficiently and profitably on a platform that benefits both parties. Instead of wasting users time with promises of airdrops, we provide real value, ensuring they can earn money from their work.
 
