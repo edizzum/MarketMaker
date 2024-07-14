@@ -12,5 +12,3 @@ export type Pool = {
   balance?: number;
   steps?: string[];
 };
-
-export type Pools = Pool[];
