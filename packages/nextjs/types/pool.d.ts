@@ -3,4 +3,12 @@ export type Pool = {
   name: string;
   user: string;
   percentage: number;
+  properties?: {
+    title: string;
+    children: {
+      content: string;
+    }[];
+  }[];
+  balance?: number;
+  steps?: string[];
 };

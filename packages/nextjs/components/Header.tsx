@@ -11,6 +11,7 @@ import { decodeAbiParameters, parseAbiParameters } from "viem";
 import { type BaseError, useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
 import LogoSVG from "~~/app/assets/svg/logo";
+import Web3AuthProvider from "~~/app/web3auth";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
@@ -48,9 +49,9 @@ export const HeaderMenuLinks = () => {
             <Link
               href={href}
               passHref
-              className={`hover:!text-white hover:!bg-black ${
-                isActive ? "bg-black shadow-md !text-white " : ""
-              } hover:bg-secondary hover:shadow-md text-black focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+              className={`hover:!text-white  ${
+                isActive ? "bg-black shadow-md text-white " : ""
+              }  hover:shadow-md hover:!bg-black text-black focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
             >
               {icon}
               <span>{label}</span>
@@ -151,19 +152,20 @@ export const Header = () => {
               autoClose
             ></IDKitWidget>
             {!done && (
-              <button onClick={() => setOpen(true)}>
+              <button onClick={() => setOpen(true)} style={{ color: "black" }}>
                 {!hash && (isPending ? "Pending, please check your wallet..." : "World ID Connection")}
               </button>
             )}
 
-            {hash && <p>Transaction Hash: {hash}</p>}
-            {isConfirming && <p>Waiting for confirmation...</p>}
-            {isConfirmed && <p>Transaction confirmed.</p>}
+            {hash && <p style={{ color: "black" }}>Transaction Hash: {hash}</p>}
+            {isConfirming && <p style={{ color: "black" }}>Waiting for confirmation...</p>}
+            {isConfirmed && <p style={{ color: "black" }}>Transaction confirmed.</p>}
             {error && <p>Error: {(error as BaseError).message}</p>}
           </>
         )}
       </div>
-      <div className="navbar-end flex-grow mr-4">
+      <div className="navbar-end flex-grow mr-4" style={{ color: "black" }}>
+        <Web3AuthProvider />
         <RainbowKitCustomConnectButton />
         <FaucetButton />
       </div>

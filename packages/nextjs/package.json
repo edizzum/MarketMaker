@@ -21,6 +21,9 @@
     "@uniswap/v2-sdk": "^3.0.1",
     "@wagmi/connectors": "^5.0.22",
     "@wagmi/core": "^2.6.9",
+    "@web3auth/base": "^8.8.0",
+    "@web3auth/ethereum-provider": "^8.10.2",
+    "@web3auth/modal": "^8.10.2",
     "@worldcoin/idkit": "^1.1.4",
     "blo": "^1.0.1",
     "burner-connector": "^0.0.8",
@@ -38,6 +41,7 @@
     "usehooks-ts": "^2.13.0",
     "viem": "2.13.6",
     "wagmi": "2.9.8",
+    "web3": "^4.11.0",
     "zustand": "^4.1.2"
   },
   "devDependencies": {

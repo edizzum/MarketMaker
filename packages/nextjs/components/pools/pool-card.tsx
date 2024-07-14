@@ -1,19 +1,19 @@
 "use client";
 
 import React, { use } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Pool } from "~~/types/pool";
 
 const PoolCard = ({ name, user, percentage, id }: Pool) => {
   const router = useRouter();
   return (
-    <div
-      onClick={() => {
-        router.push(`/pools/${id}`);
-      }}
-      className="max-w-[300px] text-white  flex flex-col gap-y-3 w-full mx-auto p-4 py-6 rounded-md bg-black"
+    <Link
+      href={`/pools/${id}`}
+      passHref
+      className="max-w-[320px] text-white  flex flex-col gap-y-3 w-full mx-auto p-4 py-8  bg-black rounded-3xl"
     >
-      <span>{name}</span>
+      <span className="font-semibold">{name}</span>
       <span>{user}</span>
       <div className="relative h-[12px]  bg-slate-400 rounded-full">
         <div
@@ -21,7 +21,7 @@ const PoolCard = ({ name, user, percentage, id }: Pool) => {
           className={`absolute  rounded-full bg-orange-400 top-0 left-0 h-full`}
         ></div>
       </div>
-    </div>
+    </Link>
   );
 };
 
