@@ -22,7 +22,7 @@ export default function ProfilePage() {
     <div className="flex flex-col border rounded-3xl px-20 py-6 w-2/3 max-w-6xl backdrop-blur-sm bg-black/20 mx-auto mt-20 ">
       <h1 className="text-4xl font-bold mb-3">Connection To WorldID</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-1.5 w-full">
-        <label htmlFor="name">Email</label>
+        <label htmlFor="name">ENS</label>
         <input defaultValue={updateData.name} type="text" id="name" name="name" />
         <label htmlFor="email">Gmail</label>
         <input defaultValue={updateData.email}  type="email" id="email" name="email" />

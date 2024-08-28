@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@chainlink/contracts": "^1.1.1",
+    "@flarenetwork/flare-periphery-contracts": "^0.1.12",
     "@pythnetwork/pyth-sdk-solidity": "^3.1.0"
   }
 }

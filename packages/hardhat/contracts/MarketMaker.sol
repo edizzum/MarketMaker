@@ -2,7 +2,7 @@
 pragma solidity ^0.8.16;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
 import {IChronicle} from "./interfaces/IChronicle.sol";
 import "@flarenetwork/flare-periphery-contracts/flare/util-contracts/userInterfaces/IFlareContractRegistry.sol";
@@ -91,15 +91,13 @@ contract MarketMaker is Ownable, ERC721URIStorage {
         address _priceFeedChainlink,
         address _priceFeedPyth,
         bytes32 _priceFeedID,
-        address _priceFeedChronicle,
         address _worldID,
         bool _isFlare,
         address _systemOwner
-    ) ERC721("PoolNFT", "TNFT") Ownable(msg.sender) {
+    ) ERC721("PoolNFT", "TNFT") {
         mmToken = IERC20(_mmToken);
         priceFeedChainlink = AggregatorV3Interface(_priceFeedChainlink);
         priceFeedPyth = IPyth(_priceFeedPyth);
-        priceFeedChronicle = _priceFeedChronicle;
         pythPriceFeedID = _priceFeedID;
         admin = msg.sender;
         selfKisser.selfKiss(address(chronicle));
@@ -242,8 +240,8 @@ contract MarketMaker is Ownable, ERC721URIStorage {
     function updatePrice(bytes[] calldata priceUpdate) public payable {
         uint256 fee = priceFeedPyth.getUpdateFee(priceUpdate);
         priceFeedPyth.updatePriceFeeds{value: fee}(priceUpdate);
-        PythStructs.Price memory price = priceFeedPyth.getPrice(
-            pythPriceFeedID
+        PythStructs.Price memory price = priceFeedPyth.getPriceUnsafe(
+            pythPriceFeedID 
         );
         int64 _price = price.price;
         parameters.price = uint256(uint64(_price) * 10**10);
