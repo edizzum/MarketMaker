@@ -1,6 +1,16 @@
 # MarketMaker
+While there are intermediaries for everything, why is there no transparent intermediary platform for marketing?
 
 MarketMaker is a marketing platform designed for project owners who may lack the necessary connections or experience in marketing and PR. MarketMaker hosts content creators and community managers with high engagement and follower counts, allowing project owners to utilize their marketing budget efficiently and profitably on a platform that benefits both parties. Instead of wasting users time with promises of airdrops, we provide real value, ensuring they can earn money from their work.
+
+Why is there a need for such a platform?
+
+Many scam projects will be eliminated from our system through WorldID verification, ensuring that only reliable projects are included.
+As everyone knows, promoting and announcing any project requires high budgets. Additionally, you need to have communication with many people. Through MarketMaker, Community Managers and Content Creators will be ready to promote your product via WorldID in our system.
+So why should Community Managers and Content Creators use this platform?
+
+Firstly, many platforms require different verifications to prove that you are not a bot user. MarketMaker easily overcomes this step thanks to WorldID.
+Many people do not get paid after doing promotions. We see this as the most important point. People can see the locked amount in the pool and their share before promoting. The requirements are clearly stated in our system. Thanks to 100% transparency, everyone benefits from MarketMaker.
 
 
 ![image](https://github.com/user-attachments/assets/d84efb2a-5ad6-44b9-9803-04ba4b9d3d54)
